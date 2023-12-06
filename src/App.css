@@ -1,5 +1,57 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html{
+  scroll-behavior: smooth;
+}
 /* Navbar CSS */
-.nav-ul li{
-  display: inline-block;
-  margin: 5px;
+.nav-ul{
+  margin: 0px;
+  padding: 5px;
+  background-color: lightskyblue;
+  & li{
+    display: inline-block;
+    margin: 5px;
+  }
+  & a{
+    padding: 3px;
+    color: white;
+    text-decoration: none;
+  }
+}
+/* Footer CSS */
+.footer{
+  position: absolute;
+  bottom: 0;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+  background-color: lightskyblue;
+}
+
+/* Sign Up CSS */
+.signContainer{
+  margin-top: 16px;
+  position: absolute;
+  margin-left: 38%;
+
+  width: 100%;
+  
+  .inputField{
+    display: block;
+    margin-top: 20px;
+    padding: 8px;
+    width: 300px;
+    border: 1px solid lightskyblue;
+  }
+  
+  & button{
+    margin-top: 20px;
+    padding: 10px;
+    width: 150px;
+    background-color: lightseagreen;
+    border: none;
+  }
 }

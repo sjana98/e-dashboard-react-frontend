@@ -10,6 +10,7 @@ function Navbar() {
                 <li><Link to="/Update">Update Products</Link></li>
                 <li><Link to="/Logout">Logout</Link></li>
                 <li><Link to="/Profile">Profile</Link></li>
+                <li><Link to="/SignUP">Sign Up</Link></li>
             </ul>
         </>
     );
