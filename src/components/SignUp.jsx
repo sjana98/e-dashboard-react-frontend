@@ -9,7 +9,7 @@ function SignUp() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {              // Sign up page restriction code after sign up of same user
+  useEffect(() => {              // Sign up page restriction after sign up of same user
     const auth = localStorage.getItem("user");
     if (auth) {
       navigate("/")

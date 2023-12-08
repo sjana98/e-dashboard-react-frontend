@@ -9,20 +9,23 @@ import PrivateRoute from './components/PrivateRoute';
 function App() {
   return (
     <div className="App">
-
       <Router>
+
         <Navbar />
+
         <Routes>
-          <Route element = {<PrivateRoute />}>
+          <Route element={<PrivateRoute />}>
             <Route path='/' element={<h2>Products listing component</h2>}/>
             <Route path='/add' element={<h2>Added products component</h2>}/>
             <Route path='/update' element={<h2>updated Products component</h2>}/>
             <Route path='/logout' element={<h2>Logout component</h2>}/>
             <Route path='/profile' element={<h2>profile component</h2>} />
           </Route>
-          <Route path='/SignUp' element={<SignUp />}/>
+          <Route path='/SignUp' element={<SignUp />} />
         </Routes>
+
       </Router>
+
       <Footer />
     </div>
   );
