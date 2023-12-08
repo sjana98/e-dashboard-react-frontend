@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
@@ -8,9 +8,17 @@ function SignUp() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const uri = "http://localhost:5000/register";
 
-  const collectData = async () => {
+  useEffect(() => {              // Sign up page restriction code after sign up of same user
+    const auth = localStorage.getItem("user");
+    if (auth) {
+      navigate("/")
+    };
+  });
+  
+  const api = "http://localhost:5000/register";
+
+  const collectData = async () => {            // api integration code
     const createRequest = {
       method: "POST",
       headers: {
@@ -18,7 +26,12 @@ function SignUp() {
       },
       body: JSON.stringify({ name, email, password }),
     };
-    const result = await fetch(uri, createRequest);
+
+    let result = await fetch(api, createRequest);
+    result = await result.json();
+
+    localStorage.setItem("user", JSON.stringify(result));
+
     if (result) {
       navigate("/");
     };
