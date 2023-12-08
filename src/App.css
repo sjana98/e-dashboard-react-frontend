@@ -31,27 +31,32 @@ html{
   background-color: lightskyblue;
 }
 
+/* Commen CSS */
+.inputField{
+  display: block;
+  margin-top: 20px;
+  padding: 8px;
+  width: 300px;
+  border: 1px solid lightskyblue;
+}
+button{
+  margin-top: 20px;
+  padding: 10px;
+  width: 150px;
+  background-color: lightseagreen;
+  border: none;
+}
+
 /* Sign Up CSS */
 .signContainer{
   margin-top: 16px;
   position: absolute;
   margin-left: 38%;
-
   width: 100%;
-  
-  .inputField{
-    display: block;
-    margin-top: 20px;
-    padding: 8px;
-    width: 300px;
-    border: 1px solid lightskyblue;
-  }
-  
-  & button{
-    margin-top: 20px;
-    padding: 10px;
-    width: 150px;
-    background-color: lightseagreen;
-    border: none;
-  }
+}
+
+/* Login CSS */
+.login{
+  margin-left: 30%;
+  margin-top: 100px;
 }

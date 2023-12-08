@@ -14,9 +14,10 @@ function Navbar() {
             <ul className='nav-ul'>
                 <li><Link to="/">Products</Link></li>
                 <li><Link to="/add">Add Products</Link></li>
-                <li><Link to="/Update">Update Products</Link></li>
-                <li><Link to="/Profile">Profile</Link></li>
+                <li><Link to="/update">Update Products</Link></li>
+                <li><Link to="/profile">Profile</Link></li>
                 <li>{auth ? <Link to="/SignUp" onClick={logout}>Logout</Link> : <Link to="/SignUp">Sign Up</Link>}</li>
+                <li><Link to="/Login">Login</Link></li>
             </ul>
         </>
     );
