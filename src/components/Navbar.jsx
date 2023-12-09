@@ -6,7 +6,7 @@ function Navbar() {
     const navigate = useNavigate();
     const logout = () => {
         localStorage.clear("user");
-        navigate("/SignUp");
+        navigate("/signup");
     };
     
     return (
@@ -15,9 +15,11 @@ function Navbar() {
                 <li><Link to="/">Products</Link></li>
                 <li><Link to="/add">Add Products</Link></li>
                 <li><Link to="/update">Update Products</Link></li>
-                <li><Link to="/profile">Profile</Link></li>
-                <li>{auth ? <Link to="/SignUp" onClick={logout}>Logout</Link> : <Link to="/SignUp">Sign Up</Link>}</li>
-                <li><Link to="/Login">Login</Link></li>
+                <li><Link to="/profile">Profile</Link></li>                
+                {
+                    auth ? <li><Link to="/login" onClick={logout}>Logout</Link></li>
+                        : <> <li><Link to="/signup">Sign Up</Link></li> <li><Link to="/login">Login</Link></li> </>
+                }
             </ul>
         </>
     );

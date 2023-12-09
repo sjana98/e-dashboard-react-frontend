@@ -46,17 +46,18 @@ button{
   background-color: lightseagreen;
   border: none;
 }
+p{
+  font-size: smaller;
+}
 
 /* Sign Up CSS */
 .signContainer{
-  margin-top: 16px;
-  position: absolute;
+  margin-top: 100px;
   margin-left: 38%;
-  width: 100%;
 }
 
 /* Login CSS */
 .login{
-  margin-left: 30%;
+  margin-left: 38%;
   margin-top: 100px;
 }
