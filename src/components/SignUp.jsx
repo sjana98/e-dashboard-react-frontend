@@ -24,7 +24,6 @@ function SignUp() {
       },
       body: JSON.stringify({ name, email, password }),
     };
-
     let result = await fetch(api, createRequest);
     result = await result.json();
 

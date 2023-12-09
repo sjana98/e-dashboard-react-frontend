@@ -19,8 +19,19 @@ html{
     padding: 3px;
     color: white;
     text-decoration: none;
+    transition: color 0.7s ease;
+  }
+  a:hover{
+    color: orangered;
   }
 }
+.navLogo{
+  width: 45px;
+  float: left;
+  margin: 3px 0 0 6px;
+  border-radius: 50%;
+}
+
 /* Footer CSS */
 .footer{
   position: absolute;
@@ -44,7 +55,14 @@ button{
   padding: 10px;
   width: 150px;
   background-color: lightseagreen;
+  color: white;
   border: none;
+  transition: width 0.3s ease;
+}
+button:hover{
+  cursor: pointer;
+  background-color: rgb(26, 126, 121);
+
 }
 p{
   font-size: smaller;
@@ -60,4 +78,7 @@ p{
 .login{
   margin-left: 38%;
   margin-top: 100px;
+}
+.nav-right{
+  text-align: right;
 }

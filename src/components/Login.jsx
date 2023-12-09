@@ -25,8 +25,10 @@ function Login() {
         };
         let result = await fetch(postApi, createRequest);
         result = await result.json();
+
         const userName = result.name;
         userName ? localStorage.setItem("user", JSON.stringify(result)) : alert("Valid email and password require for login!!");
+        
         if (userName) {
             navigate("/");
         };
