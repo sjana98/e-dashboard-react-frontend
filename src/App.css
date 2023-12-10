@@ -8,12 +8,12 @@ html{
 }
 /* Navbar CSS */
 .nav-ul{
-  margin: 0px;
   padding: 5px;
   background-color: lightskyblue;
   & li{
     display: inline-block;
-    margin: 5px;
+    margin: 5px 8px;
+    font-size: 13px;
   }
   & a{
     padding: 3px;
@@ -28,12 +28,17 @@ html{
 .navLogo{
   width: 45px;
   float: left;
-  margin: 3px 0 0 6px;
-  border-radius: 50%;
+  margin: 10px 0 0 10px;
+  border-radius: 20%;
+}
+.nav-right{
+  text-align: right;
 }
 
 /* Footer CSS */
 .footer{
+  font-size: 13px;
+  color: rgb(61, 61, 61);
   position: absolute;
   bottom: 0;
   padding: 5px;
@@ -43,6 +48,10 @@ html{
 }
 
 /* Commen CSS */
+.Container{
+  margin-top: 100px;
+  margin-left: 38%;
+}
 .inputField{
   display: block;
   margin-top: 20px;
@@ -68,17 +77,11 @@ p{
   font-size: smaller;
 }
 
-/* Sign Up CSS */
-.signContainer{
-  margin-top: 100px;
-  margin-left: 38%;
+/* Add product component */
+.addBtn{
+  border-radius: 20px;
+  width: 100px;
 }
-
-/* Login CSS */
-.login{
-  margin-left: 38%;
-  margin-top: 100px;
-}
-.nav-right{
-  text-align: right;
+.addPtCont{
+  margin-top: 15px;
 }

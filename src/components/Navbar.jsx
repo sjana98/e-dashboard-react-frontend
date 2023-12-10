@@ -11,8 +11,7 @@ function Navbar() {
 
     return (
         <>
-            <img src="https://media.istockphoto.com/id/1037461070/vector/e-digital-e-mail-at-sign-vector-logo-of-letter-e-icon-for-computer-technology-and-internet.jpg?s=612x612&w=0&k=20&c=pe2qXPdTkXAO5zxkHZL2HMV0vdNxKhmzec2Phc4FGeA="
-                alt="logo" className='navLogo' />
+            <img src="https://img.freepik.com/premium-vector/travel-agency-logo_617280-339.jpg" alt="logo" className='navLogo' />
             {
                 auth ? <ul className='nav-ul'>
                     <li><Link to="/">Products</Link></li>

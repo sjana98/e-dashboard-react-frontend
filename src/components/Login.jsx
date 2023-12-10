@@ -36,7 +36,7 @@ function Login() {
 
     return (
         <>
-            <div className="login">
+            <div className="Container">
                 <h2>Login Now</h2>
                 <input type="text" placeholder='Enter email' className='inputField' value={email} onChange={(e)=>setUserEmail(e.target.value)}/>
                 <input type="password" placeholder='Enter password' className='inputField' value={password} onChange={(e) => setUserPassword(e.target.value)} />
