@@ -41,7 +41,7 @@ function Login() {
                 <input type="text" placeholder='Enter email' className='inputField' value={email} onChange={(e)=>setUserEmail(e.target.value)}/>
                 <input type="password" placeholder='Enter password' className='inputField' value={password} onChange={(e) => setUserPassword(e.target.value)} />
                 <p>Don't have an account? <Link to="/signup"> Sign up here</Link></p>
-                <button type='button' onClick={handleLogin}>Login</button>
+                <button type='submit' onClick={handleLogin}>Login</button>
             </div>
         </>
     )

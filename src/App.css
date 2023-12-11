@@ -75,13 +75,28 @@ button:hover{
 }
 p{
   font-size: smaller;
+  margin-top: 13px;
 }
 
 /* Add product component */
 .addBtn{
-  border-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
   width: 100px;
 }
 .addPtCont{
   margin-top: 15px;
+}
+.validationText{
+  font-size: 10px;
+  color: red;
+  display: block;
+  margin-bottom: -10px;
+}
+.conformationText{
+  display: block;
+  font-size: 14px;
+  color: green;
+  margin-top: 20px;
+  margin-left: 27px;
 }

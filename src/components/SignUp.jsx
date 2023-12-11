@@ -6,6 +6,8 @@ function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState(false);
+  const [confirmMsg, setConfirmMsg] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {              // Sign up page restriction after sign up of same user
@@ -15,8 +17,15 @@ function SignUp() {
     };
   });
   
-  const api = "http://localhost:5000/signup";    // api integration part
-  const collectData = async () => {            
+  const collectData = async () => {  
+    if (!name || !email || !password) {  // Simple form validation part.
+      setErrorMsg(true);
+      return false;
+    } else {
+      setConfirmMsg(true);
+    };
+
+    const api = "http://localhost:5000/signup";    // api integration part
     const createRequest = {
       method: "POST",
       headers: {
@@ -38,11 +47,19 @@ function SignUp() {
     <>
       <div className="Container">
         <h2>Sign Up Now</h2>
-        <input className='inputField' type="text" placeholder='Enter Your Name' value={name} onChange={(e) => setName(e.target.value)} />
-        <input className='inputField' type="text" placeholder='Enter Your Email' value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input className='inputField' type="password" placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input className='inputField' type="text" placeholder='Enter your name' value={name} onChange={(e) => setName(e.target.value)} />
+        {errorMsg && !name && <span className='validationText'>Enter your name!! </span>}
+
+        <input className='inputField' type="text" placeholder='Enter your email' value={email} onChange={(e) => setEmail(e.target.value)} />
+        {errorMsg && !email && <span className='validationText'>Enter your email!! </span>}
+
+        <input className='inputField' type="password" placeholder='Enter password at least 6 digit' value={password} onChange={(e) => setPassword(e.target.value)} />
+        {errorMsg && !password && <span className='validationText'>Enter password!! </span>}
+
         <p>Already have an account? <Link to="/login"> Login here</Link></p>
-        <button type='button' onClick={collectData}>Sign Up</button>
+        <button type='submit' onClick={collectData}>Sign Up</button>
+        {confirmMsg && <span className='conformationText'> Successfully register.</span>}
+
       </div>
     </>
   )
