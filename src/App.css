@@ -104,13 +104,14 @@ p{
 /* Product CSS */
 .Product-list{
   text-align: center;
+  margin-top: 25px;
 }
 .Product-list table{
   border-collapse: collapse;
   width: 100%;
   margin-top: 30px;
 
-  & th,& td{
+  & th, & td{
   border: 1px solid #dddddd;
   text-align: left;
   padding: 5px;
@@ -126,6 +127,10 @@ p{
   color: white;
   border: none;
   }
-
 }
-
+/* emptyProduct Css */
+.emptyProduct{
+  margin-top: 30px;
+  text-align: center;
+  font-weight: 500;
+}

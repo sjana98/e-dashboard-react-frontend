@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 function Products() {
 
     const [products, setProducts] = useState([]);
-    const [alert, setalert] = useState(false);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
         allProducts()
-    }, []);
+    });
 
     const allProducts = async () => {
         const api = "http://localhost:5000/products";
@@ -18,7 +19,7 @@ function Products() {
         if (fetchProducts.length > 0) {
             setProducts(fetchProducts);
         } else {
-            setalert(true);             // This line is for, after last product delete this page is shows error.
+            navigate("/emptyPage");             // This line is for, page is shows error after the last product deleted.
         };
     };
 
@@ -34,11 +35,22 @@ function Products() {
         }
     };
 
+    const productsMap = products.map((item, index) => (
+        <tr key={item._id}>
+            <td>{index + 1}</td>
+            <td>{item.name}</td>
+            <td>Rs.{item.price}/-</td>
+            <td>{item.brand}</td>
+            <td>{item.category}</td>
+            <td><button onClick={() => handleDelete(item._id)} className='deleteBtn'>Delete</button></td>
+        </tr>
+    ))
+
     
     return (
         <>
             <div className="Product-list">
-                {alert ? <p>No products to display!!</p> : <h3>Product List</h3>}
+                <h4>Product List</h4>
                 <table>
                     <thead>
                         <tr>
@@ -50,21 +62,7 @@ function Products() {
                             <th>Operations</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {
-                            products.map((item, index) => (
-                                <tr key={item._id}>
-                                    <td>{index + 1}</td>
-                                    <td>{item.name}</td>
-                                    <td>Rs. {item.price}/-</td>
-                                    <td>{item.brand}</td>
-                                    <td>{item.category}</td>
-                                    {/* <td><button onClick={() => handleDelete(item._id)} className='deleteBtn'>Delete</button></td> */}
-                                    <td>{alert ? "Successfully deleted!!" : <button onClick={() => handleDelete(item._id)} className='deleteBtn'>Delete</button>}</td> {/* This line is for, after last product delete this page is not refresh own. */} 
-                                </tr>
-                            ))
-                        }
-                    </tbody>
+                    <tbody>{ productsMap }</tbody>
                 </table>
             </div>
         </>
