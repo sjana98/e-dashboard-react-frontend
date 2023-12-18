@@ -18,7 +18,6 @@ function UpdateProducts() {
         } else {
             setConfirmMsg(true);
         };
-
     };
 
     return (

@@ -44,11 +44,10 @@ function Products() {
             <td>{item.category}</td>
             <td>
                 <button onClick={() => handleDelete(item._id)} className='deleteBtn'>Delete</button>
-                <button className='updateBtn'><Link to={"/update/"+item._id} className='updateLink' >Update</Link></button>
-                {/* <Link to={"/update/"+item._id} className='updateBtn'>Update</Link> */}
+                <button className='updateBtn'><Link to={`/update/${item._id}`} className='updateLink' >Update</Link></button>
             </td>
         </tr>
-    ))
+    ));
 
     
     return (
