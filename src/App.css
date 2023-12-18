@@ -100,6 +100,18 @@ p{
   margin-top: 20px;
   margin-left: 27px;
 }
+.addProductBtn{
+  float: right !important;
+  width: 80px;
+  margin: -46px 65px 20px 0;
+  border-bottom-right-radius: 5px !important;
+  border-bottom-left-radius: 20px !important;
+}
+.addProductLink{
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
 
 /* Product CSS */
 .Product-list{

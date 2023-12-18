@@ -54,6 +54,7 @@ function Products() {
         <>
             <div className="Product-list">
                 <h4>Product List</h4>
+                <button className='addProductBtn'><Link to= "/add" className='addProductLink' >Add Product</Link></button>
                 <table>
                     <thead>
                         <tr>
