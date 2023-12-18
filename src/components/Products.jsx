@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Products() {
@@ -42,7 +42,11 @@ function Products() {
             <td>Rs.{item.price}/-</td>
             <td>{item.brand}</td>
             <td>{item.category}</td>
-            <td><button onClick={() => handleDelete(item._id)} className='deleteBtn'>Delete</button></td>
+            <td>
+                <button onClick={() => handleDelete(item._id)} className='deleteBtn'>Delete</button>
+                <button className='updateBtn'><Link to={"/update/"+item._id} className='updateLink' >Update</Link></button>
+                {/* <Link to={"/update/"+item._id} className='updateBtn'>Update</Link> */}
+            </td>
         </tr>
     ))
 

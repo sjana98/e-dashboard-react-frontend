@@ -123,9 +123,20 @@ p{
   margin-top: 1px;
   padding: 2px;
   width: 50px;
-  background-color: lightseagreen;
+  background-color: lightcoral;
   color: white;
   border: none;
+  }
+  .updateBtn{
+  margin: 5px ;
+  padding: 2px;
+  width: 50px;
+  background-color: rgba(32, 178, 171, 0.859);
+  border: none;
+  }
+  .updateLink{
+    text-decoration: none;
+    color: white;
   }
 }
 /* emptyProduct Css */
