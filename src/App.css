@@ -117,7 +117,7 @@ p{
   padding: 5px;
   }
   & tr:nth-child(even){
-    background-color: #dddddd;
+    background-color: #f1efef;
   }
   .deleteBtn{
   margin-top: 1px;

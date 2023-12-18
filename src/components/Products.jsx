@@ -10,7 +10,7 @@ function Products() {
 
     useEffect(() => {
         allProducts()
-    });
+    },[]);
 
     const allProducts = async () => {
         const api = "http://localhost:5000/products";

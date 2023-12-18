@@ -12,7 +12,7 @@ function Login() {
         if (auth) {
             navigate("/");
         }; 
-    });
+    },[]);
 
     const postApi = "http://localhost:5000/login";     // api integration part 
     const handleLogin = async () => {

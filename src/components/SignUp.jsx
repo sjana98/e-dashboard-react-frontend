@@ -15,7 +15,7 @@ function SignUp() {
     if (auth) {
       navigate("/")
     };
-  });
+  },[]);
   
   const collectData = async () => {  
     if (!name || !email || !password) {  // Simple form validation part.

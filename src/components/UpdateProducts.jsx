@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function UpdateProducts() {
 
@@ -7,18 +7,14 @@ function UpdateProducts() {
     const [price, setPrice] = useState("");
     const [brand, setBrand] = useState("");
     const [category, setCategory] = useState("");
-
     const [errorMsg, setErrorMsg] = useState(false);
-    const [confirmMsg, setConfirmMsg] = useState(false);
-
-
     const params = useParams()
+    const navigate = useNavigate();
 
-    const userName = JSON.parse(localStorage.getItem("user")).name;
 
     useEffect(() => {
         getProductDetail()
-    });
+    },[]);
     const getProductDetail = async () => {
         const api = `http://localhost:5000/products/${params.id}`;
         const fetchProduct = await fetch(api);
@@ -34,8 +30,19 @@ function UpdateProducts() {
             setErrorMsg(true);
             return false;
         } else {
-            setConfirmMsg(true);
+            navigate("/");
         };
+
+        const api = `http://localhost:5000/products/${params.id}`;
+        const createRequest = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({name, price, brand, category}),
+        };
+        const fetchData = await fetch(api, createRequest);
+        await fetchData.json();
     };
 
 
@@ -56,7 +63,6 @@ function UpdateProducts() {
                 {errorMsg && !category && <span className='validationText'>Enter category of product!!</span>}
 
                 <button type='submit' className='addBtn' onClick={handleUpdate}>Update</button>
-                {confirmMsg && <span className='conformationText'> {userName}, successfully update your product.</span>}
             </form>
         </>
     )
