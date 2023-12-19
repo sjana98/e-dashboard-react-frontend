@@ -1,42 +1,42 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-html{
+html {
   scroll-behavior: smooth;
 }
 /* Navbar CSS */
-.nav-ul{
+.nav-ul {
   padding: 5px;
   background-color: lightskyblue;
-  & li{
+  & li {
     display: inline-block;
     margin: 5px 8px;
     font-size: 13px;
   }
-  & a{
+  & a {
     padding: 3px;
     color: white;
     text-decoration: none;
     transition: color 0.7s ease;
   }
-  a:hover{
+  a:hover {
     color: orangered;
   }
 }
-.navLogo{
+.navLogo {
   width: 45px;
   float: left;
   margin: 10px 0 0 10px;
   border-radius: 20%;
 }
-.nav-right{
+.nav-right {
   text-align: right;
 }
 
 /* Footer CSS */
-.footer{
+.footer {
   font-size: 13px;
   color: rgb(61, 61, 61);
   position: absolute;
@@ -48,18 +48,18 @@ html{
 }
 
 /* Commen CSS */
-.Container{
+.Container {
   margin-top: 100px;
   margin-left: 38%;
 }
-.inputField{
+.inputField {
   display: block;
   margin-top: 20px;
   padding: 8px;
   width: 300px;
   border: 1px solid lightskyblue;
 }
-button{
+button {
   margin-top: 20px;
   padding: 10px;
   width: 150px;
@@ -68,70 +68,68 @@ button{
   border: none;
   transition: width 0.3s ease;
 }
-button:hover{
+button:hover {
   cursor: pointer;
   background-color: rgb(26, 126, 121);
-
 }
-p{
+p {
   font-size: smaller;
   margin-top: 13px;
 }
 
 /* Add product component */
-.addBtn{
+.addBtn {
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   width: 100px;
 }
-.addPtCont{
+.addPtCont {
   margin-top: 15px;
 }
-.validationText{
+.validationText {
   font-size: 10px;
   color: red;
   display: block;
   margin-bottom: -10px;
 }
-.conformationText{
+.conformationText {
   display: block;
   font-size: 14px;
   color: green;
   margin-top: 20px;
   margin-left: 27px;
 }
-.addProductBtn{
+.addProductBtn {
   float: right !important;
   width: 80px;
   margin: -46px 65px 20px 0;
   border-bottom-right-radius: 5px !important;
   border-bottom-left-radius: 20px !important;
 }
-.addProductLink{
+.addProductLink {
   text-decoration: none;
   color: white;
   font-weight: 600;
 }
 
-
 /* Product CSS */
-.Product-list{
+.Product-list {
   text-align: center;
   justify-content: center;
   margin-top: 25px;
 
-  .searchInput{
-    font-size: 12px ; 
-    padding: 3px 3px 3px 8px;
+  .searchInput {
+    font-size: 12px;
+    padding: 3px 60px 3px 8px;
     margin-top: 20px;
     margin-left: 12%;
     width: 250px;
-    border: 1px solid #87cefa;
+    border: 1px solid lightseagreen;
     border-radius: 10px;
     outline: none;
   }
-  .searchProductBtn{
-    font-size: 12px ;
+  .searchProductBtn {
+    font-size: 12px;
     padding: 3px;
     width: 55px;
     margin-left: -55px;
@@ -140,47 +138,56 @@ p{
     border-bottom-right-radius: 10px;
   }
 }
-.Product-list table{
+.Product-list table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 30px;
 
-  & th, & td{
-  border: 1px solid #dddddd;
-  text-align: center;
-  padding: 5px;
+  & th,
+  & td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 5px;
   }
-  & tr:nth-child(even){
+  & tr:nth-child(even) {
     background-color: #f1efef;
   }
-  .deleteBtn{
-  margin-top: 1px;
-  padding: 3px;
-  width: 50px;
-  background-color: lightcoral;
-  color: white;
-  border: none;
-  border-top-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  .deleteBtn {
+    margin-top: 1px;
+    padding: 3px;
+    width: 50px;
+    background-color: lightcoral;
+    color: white;
+    border: none;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
-  .updateBtn{
-  margin: 5px ;
-  padding: 3px;
-  width: 50px;
-  background-color: rgba(32, 178, 171, 0.859);
-  border: none;
-  border-top-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  .updateBtn {
+    margin: 5px;
+    padding: 3px;
+    width: 50px;
+    background-color: rgba(32, 178, 171, 0.859);
+    border: none;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
-  .updateLink{
+  .updateBtn:hover {
+    cursor: pointer;
+    background-color: rgb(26, 126, 121);
+  }
+  .deleteBtn:hover {
+    cursor: pointer;
+    background-color: rgb(199, 84, 84);
+  }
+  .updateLink {
     text-decoration: none;
     color: white;
   }
 }
 /* emptyProduct Css */
-.emptyProduct{
+.emptyProduct {
   margin-top: 30px;
   text-align: center;
   font-weight: 500;
