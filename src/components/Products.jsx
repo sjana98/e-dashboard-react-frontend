@@ -4,7 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function Products() {
 
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]); 
+    const [searchProduct, setSearchProduct] = useState(""); 
+    const [showBtn, setShowBtn] = useState(false); 
     const navigate = useNavigate();
 
 
@@ -35,6 +37,19 @@ function Products() {
         }
     };
 
+    const handleSearch = async () => {
+        console.log(searchProduct)
+        const key = searchProduct;
+        const api = `http://localhost:5000/search/${key}`;
+        const fetchData = await fetch(api);
+        const result = await fetchData.json();
+        setProducts(result);
+        setShowBtn(true);
+    }
+    const handleBack = () => {
+        window.location.reload(true);
+    }
+
     const productsMap = products.map((item, index) => (
         <tr key={item._id}>
             <td>{index + 1}</td>
@@ -44,19 +59,24 @@ function Products() {
             <td>{item.category}</td>
             <td>
                 <button onClick={() => handleDelete(item._id)} className='deleteBtn'>Delete</button>
-                <button className='updateBtn'><Link to={`/update/${item._id}`} className='updateLink' >Update</Link></button>
+                <button className='updateBtn'><Link to={`/update/${item._id}`} className='updateLink'>Update</Link></button>
             </td>
         </tr>
     ));
+
+    const productsMapWithMsg = productsMap.length > 0 ? productsMap : <p>No record found!!</p>;
 
     
     return (
         <>
             <div className="Product-list">
                 <h4>Product List</h4>
+
                 <button className='addProductBtn'><Link to="/add" className='addProductLink' >Add Product</Link></button>
-                <input type="text" className='searchInput' placeholder='Search Product' />
-                <button className='searchProductBtn'>Search</button>
+
+                <input type="text" className='searchInput' placeholder='Search Product' value={searchProduct} onChange={(e)=>setSearchProduct(e.target.value)} />
+                <button className='searchProductBtn' onClick={handleSearch}>Search</button>
+                { showBtn && <button className='backProductBtn' onClick={handleBack}>Get all products</button> }
                 
                 <table>
                     <thead>
@@ -69,7 +89,7 @@ function Products() {
                             <th>Operations</th>
                         </tr>
                     </thead>
-                    <tbody>{ productsMap }</tbody>
+                    <tbody>{ productsMapWithMsg }</tbody>
                 </table>
             </div>
         </>

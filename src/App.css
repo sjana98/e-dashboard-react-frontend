@@ -120,7 +120,7 @@ p {
 
   .searchInput {
     font-size: 12px;
-    padding: 3px 60px 3px 8px;
+    padding: 3px 60px 2.5px 8px;
     margin-top: 20px;
     margin-left: 12%;
     width: 250px;
@@ -137,6 +137,16 @@ p {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
+  .backProductBtn {
+    font-size: 12px;
+    padding: 3.2px;
+    width: 100px;
+    margin-left: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
 }
 .Product-list table {
   border-collapse: collapse;
@@ -188,7 +198,11 @@ p {
 }
 /* emptyProduct Css */
 .emptyProduct {
-  margin-top: 30px;
+  margin-top: 46px;
   text-align: center;
   font-weight: 500;
+  & span{
+    margin-left: 10%;
+  }
 }
+
