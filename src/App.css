@@ -25,7 +25,7 @@ html {
     color: orangered;
   }
   .userName{
-    margin-left: 80%;
+    margin-left: 75%;
     font-weight: 500;
     color: rgb(26, 126, 121);
     text-transform: uppercase;
@@ -254,4 +254,11 @@ p {
 
 .user-profile-card__logout:hover {
   background-color: #0056b3;
+}
+.__delete{
+  background-color: lightcoral;
+}
+.__delete:hover{
+  background-color: rgb(199, 84, 84);
+
 }
