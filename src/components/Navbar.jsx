@@ -2,12 +2,10 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
+
+    useNavigate(); // here, this hook is for auto navbar refresh on ui update.
     const auth = localStorage.getItem("user");
-    const navigate = useNavigate();
-    const logout = () => {
-        localStorage.clear("user");
-        navigate("/signup");
-    };
+    
 
     return (
         <>
@@ -15,8 +13,10 @@ function Navbar() {
             {
                 auth && <ul className='nav-ul'>
                     <li><Link to="/">Products</Link></li>
-                    <li><Link to="/profile">Profile</Link></li>
-                    <li><Link to="/login" onClick={logout}>Logout ({JSON.parse(auth).name})</Link></li>
+                    <li>
+                        <Link to="/profile">Profile</Link>
+                        [{JSON.parse(auth).name}]
+                    </li>
                 </ul>
             }
             {
