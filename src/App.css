@@ -21,8 +21,14 @@ html {
     text-decoration: none;
     transition: color 0.7s ease;
   }
-  a:hover {
+  a.active{
     color: orangered;
+  }
+  .userName{
+    margin-left: 80%;
+    font-weight: 500;
+    color: rgb(26, 126, 121);
+    text-transform: uppercase;
   }
 }
 .navLogo {
