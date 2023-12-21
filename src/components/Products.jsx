@@ -9,13 +9,14 @@ function Products() {
     const [showBtn, setShowBtn] = useState(false); 
     const navigate = useNavigate();
 
+    const userId = JSON.parse(localStorage.getItem("user"))._id; 
 
     useEffect(() => {
         allProducts()
     },[]);
 
     const allProducts = async () => {
-        const api = "http://localhost:5000/products";
+        const api = `http://localhost:5000/products-of-user/${userId}`;
         let fetchProducts = await fetch(api);
         fetchProducts = await fetchProducts.json();
         if (fetchProducts.length > 0) {

@@ -14,7 +14,7 @@ function Navbar() {
                 auth && <ul className='nav-ul'>
                     <li><NavLink to="/" >Products</NavLink></li>
                     <li><NavLink to="/profile" >Profile</NavLink></li>
-                    <li className='userName'>[{JSON.parse(auth).name}]</li>
+                    <li className='userName'>[ {JSON.parse(auth).name} ]</li>
                 </ul>
             }
             {
