@@ -23,7 +23,7 @@ function UserProfile() {
             result = await result.json();
         
             if (result) {
-                const api2 = `http://localhost:5000/products-of-user/${userId}`;   // also delete products of specific user.
+                const api2 = `http://localhost:5000/products-of-user/${userId}`;   // also delete products of a specific user.
                 const createRequest2 = {
                     method: "Delete",
                 };
