@@ -94,8 +94,8 @@ function Products() {
                 {showBtn && <button className='backProductBtn' onClick={handleBack}>Get all products</button>}
 
                 <div>
-                    {CardFormProducts && <button className='uiFormBtn' onClick={handleTableForm}>Table form</button>}
-                    {TableFormProducts && <button className='uiFormBtn' onClick={handleCardForm}>Card form</button>}
+                    {CardFormProducts && <button className='uiFormBtn' onClick={handleTableForm}>Change to table form</button>}
+                    {TableFormProducts && <button className='uiFormBtn' onClick={handleCardForm}>Change to card form</button>}
                 </div>
                 {TableFormProducts &&
                     <table>
