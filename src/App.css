@@ -47,6 +47,7 @@ html {
   color: rgb(61, 61, 61);
   position: absolute;
   bottom: 0;
+  position: fixed;
   padding: 5px;
   text-align: center;
   width: 100%;
@@ -117,7 +118,7 @@ p {
   font-weight: 600;
 }
 
-/* Product CSS */
+/*Table form products CSS */
 .Product-list {
   text-align: center;
   justify-content: center;
@@ -151,7 +152,14 @@ p {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
-  
+  .uiFormBtn{
+    display: inline-block;
+    font-size: 12px;
+    padding: 3.2px;
+    width: 100px;
+    margin-left: 5px;
+    border-radius: 10px;
+  }
 }
 .Product-list table {
   border-collapse: collapse;
@@ -201,6 +209,59 @@ p {
     color: white;
   }
 }
+
+/* Card form products css */
+.product-card {
+  display: inline-block;
+  width: 40%;
+  border: 1px solid #ccc;
+  background: linear-gradient(to top, rgb(224, 239, 239), rgba(146, 216, 211, 0.859));
+  padding: 20px;
+  margin: 15px 60px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+
+  & img{
+    float: right;
+    border-radius: 0px;
+  }
+}
+.product-card span{
+  font-weight: 650;
+}
+.product-info p {
+  margin: 0;
+  padding: 0;
+}
+.product-actions {
+  margin-top: 5px;
+}
+.product-actions button {
+  margin-right: 10px;
+  padding: 3px;
+  width: 50px;
+  background-color: rgba(32, 178, 171, 0.859);
+  border: none;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.updateLink {
+  text-decoration: none;
+  color: white;
+}
+.product-actions button:last-child{
+  background-color: lightcoral;
+}
+.product-actions button:hover {
+  cursor: pointer;
+  background-color: rgb(26, 126, 121);
+}
+.product-actions button:last-child:hover {
+  cursor: pointer;
+  background-color: rgb(199, 84, 84);
+}
+
 /* emptyProduct Css */
 .emptyProduct {
   margin-top: 46px;
@@ -224,25 +285,21 @@ p {
   margin-right: 20%;
   margin-top: 3%;
 }
-
 .user-profile-card__logo {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   margin-bottom: 10px;
 }
-
 .user-profile-card__name {
   font-size: 18px;
   margin-bottom: 5px;
 }
-
 .user-profile-card__email {
   font-size: 14px;
   color: #888;
   margin-bottom: 10px;
 }
-
 .user-profile-card__logout {
   padding: 10px 20px;
   background-color: #007bff;
@@ -251,7 +308,6 @@ p {
   border-radius: 5px;
   cursor: pointer;
 }
-
 .user-profile-card__logout:hover {
   background-color: #0056b3;
 }
@@ -260,5 +316,4 @@ p {
 }
 .__delete:hover{
   background-color: rgb(199, 84, 84);
-
 }
