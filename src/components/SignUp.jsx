@@ -36,9 +36,9 @@ function SignUp() {
     let result = await fetch(api, createRequest);
     result = await result.json();
 
-    localStorage.setItem("user", JSON.stringify(result));
-
     if (result) {
+      localStorage.setItem("user", JSON.stringify(result.resultData));
+      localStorage.setItem("token", JSON.stringify(result.authToken));
       navigate("/");
     };
   };

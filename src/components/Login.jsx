@@ -14,8 +14,8 @@ function Login() {
         }; 
     },[]);
 
-    const postApi = "http://localhost:5000/login";     // api integration part 
-    const handleLogin = async () => {
+    const handleLogin = async () => {                    // api integration part
+        const postApi = "http://localhost:5000/login";      
         const createRequest = {
             method: "POST",
             headers: {
@@ -25,12 +25,12 @@ function Login() {
         };
         let result = await fetch(postApi, createRequest);
         result = await result.json();
-
-        const userName = result.name;
-        userName ? localStorage.setItem("user", JSON.stringify(result)) : alert("Valid email and password require for login!!");
-        
-        if (userName) {
+        if (result.authToken) {
+            localStorage.setItem("user", JSON.stringify(result.userDetail));
+            localStorage.setItem("token", JSON.stringify(result.authToken));
             navigate("/");
+        } else {
+            alert("Valid email and password require for login!!");
         };
     };
 
