@@ -21,12 +21,12 @@ function Products() {
 
     const allProducts = async () => {
         const api = `http://localhost:5000/products-of-user/${userId}`;
-        const token = {
+        const authToken = {
             headers: {
                 authorization: JSON.parse(localStorage.getItem("token")),
             },
         };
-        let fetchProducts = await fetch(api,token);
+        let fetchProducts = await fetch(api, authToken);
         fetchProducts = await fetchProducts.json();
         if (fetchProducts.length > 0) {
             setProducts(fetchProducts);
