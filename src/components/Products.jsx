@@ -23,7 +23,7 @@ function Products() {
         const api = `http://localhost:5000/products-of-user/${userId}`;
         const authToken = {
             headers: {
-                authorization: JSON.parse(localStorage.getItem("token")),
+                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
             },
         };
         let fetchProducts = await fetch(api, authToken);
