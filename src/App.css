@@ -98,13 +98,6 @@ p {
   display: block;
   margin-bottom: -10px;
 }
-.conformationText {
-  display: block;
-  font-size: 14px;
-  color: green;
-  margin-top: 20px;
-  margin-left: 27px;
-}
 .addProductBtn {
   float: right !important;
   width: 80px;

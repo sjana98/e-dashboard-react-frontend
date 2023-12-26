@@ -7,7 +7,6 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState(false);
-  const [confirmMsg, setConfirmMsg] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {              // Sign up page restriction after sign up of same user
@@ -21,8 +20,6 @@ function SignUp() {
     if (!name || !email || !password) {  // Simple form validation part.
       setErrorMsg(true);
       return false;
-    } else {
-      setConfirmMsg(true);
     };
 
     const api = "http://localhost:5000/signup";    // api integration part
@@ -36,10 +33,12 @@ function SignUp() {
     let result = await fetch(api, createRequest);
     result = await result.json();
 
-    if (result) {
+    if (result.authToken) {
       localStorage.setItem("user", JSON.stringify(result.resultData));
       localStorage.setItem("token", JSON.stringify(result.authToken));
       navigate("/");
+    } else {
+      alert("Already have user with same email id !!!");
     };
   };
 
@@ -58,7 +57,6 @@ function SignUp() {
 
         <p>Already have an account? <Link to="/login"> Login here</Link></p>
         <button type='submit' onClick={collectData}>Sign Up</button>
-        {confirmMsg && <span className='conformationText'> Successfully register.</span>}
 
       </div>
     </>
