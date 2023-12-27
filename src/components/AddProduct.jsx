@@ -11,21 +11,24 @@ function AddProduct() {
 
     const userName = JSON.parse(localStorage.getItem("user")).name;
     
-    const handleSubmit = async () => {                
-        if (!name || !price || !brand || !category) {       // Simple form validation part
+    const handleSubmit = async () => {         
+        // Simple form validation part
+        if (!name || !price || !brand || !category) {       
             setErrorMsg(true);
             return false;
         } else {
             setConfirmMsg(true);
         };
 
-        const userId = JSON.parse(localStorage.getItem("user"))._id;   // api integration part
+        // api integration part
+        const userId = JSON.parse(localStorage.getItem("user"))._id;   
         
         const api = "http://localhost:5000/add-product"; 
         const createRequest = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
             },
             body: JSON.stringify({ name, price, brand, category, userId }),
         };

@@ -14,10 +14,16 @@ function UpdateProducts() {
 
     useEffect(() => {
         getProductDetail()
-    },[]);
+    }, []);
+     // Get the product for update
     const getProductDetail = async () => {
         const api = `http://localhost:5000/products/${params.id}`;
-        const fetchProduct = await fetch(api);
+        const authToken = {
+            headers: {
+                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+            },
+        };
+        const fetchProduct = await fetch(api, authToken);
         const result = await fetchProduct.json();
         setName(result.name);
         setPrice(result.price);
@@ -25,19 +31,22 @@ function UpdateProducts() {
         setCategory(result.category);
     };
 
+    // Got product update
     const handleUpdate = async () => {
-        if (!name || !price || !brand || !category) {       // Simple form validation part
+        // Simple form validation part
+        if (!name || !price || !brand || !category) {       
             setErrorMsg(true);
             return false;
         } else {
             navigate("/");
         };
-
+        // api integration
         const api = `http://localhost:5000/products/${params.id}`;
         const createRequest = {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
+                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
             },
             body: JSON.stringify({name, price, brand, category}),
         };

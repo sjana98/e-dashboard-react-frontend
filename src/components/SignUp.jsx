@@ -9,20 +9,22 @@ function SignUp() {
   const [errorMsg, setErrorMsg] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {              // Sign up page restriction after sign up of same user
+  // Sign up page restrict, for signed up user
+  useEffect(() => {              
     const auth = localStorage.getItem("user");
     if (auth) {
       navigate("/")
     };
   },[]);
   
-  const collectData = async () => {  
-    if (!name || !email || !password) {  // Simple form validation part.
+  const collectData = async () => { 
+    // Simple form validation
+    if (!name || !email || !password) {  
       setErrorMsg(true);
       return false;
     };
-
-    const api = "http://localhost:5000/signup";    // api integration part
+    // api integration part
+    const api = "http://localhost:5000/signup";    
     const createRequest = {
       method: "POST",
       headers: {
@@ -32,7 +34,7 @@ function SignUp() {
     };
     let result = await fetch(api, createRequest);
     result = await result.json();
-
+    // Store jwt token in browser local storage
     if (result.authToken) {
       localStorage.setItem("user", JSON.stringify(result.resultData));
       localStorage.setItem("token", JSON.stringify(result.authToken));

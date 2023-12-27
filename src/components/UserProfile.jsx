@@ -15,17 +15,24 @@ function UserProfile() {
     const handleDelete = async (id) => {
         const confirmation = window.confirm("Are you sure you want to delete your account and all data? This action cannot be undone.");
         if (confirmation) {
+            // delete account of loged in user.
             const api = `http://localhost:5000/account/${id}`;
             const createRequest = {
                 method: "Delete",
+                headers: {
+                    authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+                },
             };
             let result = await fetch(api, createRequest);
             result = await result.json();
-        
+            // delete products with account delete of loged in user.
             if (result) {
-                const api2 = `http://localhost:5000/products-of-user/${userId}`;   // also delete products of a specific user.
+                const api2 = `http://localhost:5000/products-of-user/${userId}`;   
                 const createRequest2 = {
                     method: "Delete",
+                    headers: {
+                        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+                    },
                 };
                 await fetch(api2, createRequest2);
 

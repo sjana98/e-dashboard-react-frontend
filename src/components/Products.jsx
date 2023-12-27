@@ -18,7 +18,7 @@ function Products() {
         allProducts()
         setCardFormProducts(true)
     }, []);
-
+    // Get all products on screen
     const allProducts = async () => {
         const api = `http://localhost:5000/products-of-user/${userId}`;
         const authToken = {
@@ -35,31 +35,42 @@ function Products() {
         };
     };
 
+    // Delete product 
     const handleDelete = async (id) => {
         const api = `http://localhost:5000/products/${id}`;
         const createRequest = {
             method: "Delete",
+            headers: {
+                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+            },
         };
         let result = await fetch(api, createRequest);
         await result.json();
         if (result) {
             allProducts();
-        }
+        };
     };
 
+    // Search product
     const handleSearch = async () => {
         console.log(searchProduct)
         const key = searchProduct;
         const api = `http://localhost:5000/search/${key}`;
-        const fetchData = await fetch(api);
+        const authToken = {
+            headers: {
+                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+            },
+        };
+        const fetchData = await fetch(api, authToken);
         const result = await fetchData.json();
         setProducts(result);
         setShowBtn(true);
     }
     const handleBack = () => {
         window.location.reload(true);
-    }
+    };
 
+    // Got all products maping
     const productsMap = products.map((item, index) => (
 
         <tr key={item._id}>
@@ -74,9 +85,9 @@ function Products() {
             </td>
         </tr>
     ));
-
     const productsMapWithMsg = productsMap.length > 0 ? productsMap : <p>No record found!!</p>;
-
+    
+    // Table to Card format switching handle
     const handleTableForm = () => {
         setTableFormProducts(true)
         setCardFormProducts(false)
@@ -91,17 +102,18 @@ function Products() {
         <>
             <div className="Product-list">
                 <h4>Product List</h4>
-
+                {/* Abb product button  */}
                 <button className='addProductBtn'><Link to="/add" className='addProductLink' >Add Product</Link></button>
-
+                {/* Products search area */}
                 <input type="text" className='searchInput' placeholder='Search Product' value={searchProduct} onChange={(e) => setSearchProduct(e.target.value)} />
                 <button className='searchProductBtn' onClick={handleSearch}>Search</button>
                 {showBtn && <button className='backProductBtn' onClick={handleBack}>Get all products</button>}
-
+                {/* Table to Card format switch button */}
                 <div>
                     {CardFormProducts && <button className='uiFormBtn' onClick={handleTableForm}>Change to table form</button>}
                     {TableFormProducts && <button className='uiFormBtn' onClick={handleCardForm}>Change to card form</button>}
                 </div>
+                {/* Products in table format */}
                 {TableFormProducts &&
                     <table>
                         <thead>
@@ -119,6 +131,7 @@ function Products() {
                 }
             </div>
 
+            {/* Products in card format */}
             {CardFormProducts &&
                 products.map((item, index) => (
                     <>

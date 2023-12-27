@@ -7,14 +7,16 @@ function Login() {
     const [password, setUserPassword] = useState("");
     const navigate = useNavigate();
 
-    useEffect(() => {                             // Login page restriction after login.
+    // Login page restrict, for loged in user
+    useEffect(() => {                             
         const auth = localStorage.getItem("user");
         if (auth) {
             navigate("/");
         }; 
     },[]);
 
-    const handleLogin = async () => {                    // api integration part
+    const handleLogin = async () => {        
+        // api integration part
         const postApi = "http://localhost:5000/login";      
         const createRequest = {
             method: "POST",
@@ -25,6 +27,7 @@ function Login() {
         };
         let result = await fetch(postApi, createRequest);
         result = await result.json();
+        // Store jwt token in browser local storage
         if (result.authToken) {
             localStorage.setItem("user", JSON.stringify(result.userDetail));
             localStorage.setItem("token", JSON.stringify(result.authToken));
