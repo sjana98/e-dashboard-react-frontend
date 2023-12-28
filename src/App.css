@@ -98,12 +98,20 @@ p {
   display: block;
   margin-bottom: -10px;
 }
+.conformationText {
+  display: block;
+  font-size: 14px;
+  color: green;
+  margin-top: 20px;
+  margin-left: 27px;
+}
 .addProductBtn {
   float: right !important;
   width: 80px;
   margin: -46px 65px 20px 0;
   border-bottom-right-radius: 5px !important;
   border-bottom-left-radius: 20px !important;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.122);
 }
 .addProductLink {
   text-decoration: none;
@@ -144,6 +152,7 @@ p {
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.178);
   }
   .uiFormBtn{
     display: inline-block;
@@ -152,6 +161,7 @@ p {
     width: 130px;
     margin-left: 5px;
     border-radius: 10px;
+    box-shadow: 5px 6px 1px rgba(32, 178, 171, 0.178);
   }
 }
 .Product-list table {
@@ -238,6 +248,7 @@ p {
   border-top-right-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.178);
 }
 .updateLink {
   text-decoration: none;
@@ -248,11 +259,13 @@ p {
 }
 .product-actions button:hover {
   cursor: pointer;
-  background-color: rgb(26, 126, 121);
+  background-color: rgb(32, 144, 138);
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.467);
 }
 .product-actions button:last-child:hover {
   cursor: pointer;
   background-color: rgb(199, 84, 84);
+  box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.467);
 }
 
 /* emptyProduct Css */
