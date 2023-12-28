@@ -12,7 +12,7 @@ function Products() {
     const [CardFormProducts, setCardFormProducts] = useState(false);
 
     const navigate = useNavigate();
-
+    // Get pesionalize products of user
     const userId = JSON.parse(localStorage.getItem("user"))._id;
 
     useEffect(() => {
@@ -21,13 +21,13 @@ function Products() {
     }, []);
     // Get all products on screen
     const allProducts = async () => {
-        const api = `http://localhost:5000/products-of-user/${userId}`;
-        const authToken = {
-            headers: {
-                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-            },
-        };
         try {
+            const api = `http://localhost:5000/products-of-user/${userId}`;
+            const authToken = {
+                headers: {
+                    authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+                },
+            };
             let fetchProducts = await axios(api, authToken);
             fetchProducts = fetchProducts.data;
             if (fetchProducts.length > 0) {
@@ -36,20 +36,19 @@ function Products() {
         } catch (error) {
             navigate("/emptyPage");             // This line is for, page is shows error after the last product deleted.
             console.error(error);
-            
-        }
+        };
     };
 
     // Delete product 
     const handleDelete = async (id) => {
-        const api = `http://localhost:5000/products/${id}`;
-        const createRequest = {
-            method: "Delete",
-            headers: {
-                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-            },
-        };
         try {
+            const api = `http://localhost:5000/products/${id}`;
+            const createRequest = {
+                method: "Delete",
+                headers: {
+                    authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+                },
+            };
             let result = await axios(api, createRequest);
             if (result) {
                 allProducts();
@@ -62,22 +61,22 @@ function Products() {
     // Search product
     const handleSearch = async () => {
         const key = searchProduct;
-        const api = `http://localhost:5000/search/${key}`;
-        const authToken = {
-            headers: {
-                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-            },
-        };
         try {
+            const api = `http://localhost:5000/search/${key}`;
+            const authToken = {
+                headers: {
+                    authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+                },
+            };
             const fetchData = await axios(api, authToken);
             const result = fetchData.data;
             setProducts(result);
             setShowBtn(true);
         } catch (error) {
-          console.error(error);
+            console.error(error);
         };
     };
-    // Handle refresh page after search 
+    // Handle page refresh button after search 
     const handleBack = () => {
         window.location.reload(true);
     };
@@ -98,7 +97,7 @@ function Products() {
         </tr>
     ));
     const productsMapWithMsg = productsMap.length > 0 ? productsMap : <p>No record found!!</p>;
-    
+
     // Table to Card format switching handle
     const handleTableForm = () => {
         setTableFormProducts(true)
@@ -148,7 +147,7 @@ function Products() {
                 products.map((item, index) => (
                     <>
                         <div className="product-card">
-                        <img src='https://cdn-icons-png.flaticon.com/512/1440/1440523.png' alt="User Logo" className="user-profile-card__logo" />
+                            <img src='https://cdn-icons-png.flaticon.com/512/1440/1440523.png' alt="User Logo" className="user-profile-card__logo" />
 
                             <div className="product-info" key={item._id}>
                                 <p> <span>Sl. no :</span> {index + 1}</p>

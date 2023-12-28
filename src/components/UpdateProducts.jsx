@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
+import axios from 'axios';
 
 function UpdateProducts() {
 
@@ -15,43 +16,50 @@ function UpdateProducts() {
     useEffect(() => {
         getProductDetail()
     }, []);
-     // Get the product for update
+    // Get the product for update
     const getProductDetail = async () => {
-        const api = `http://localhost:5000/products/${params.id}`;
-        const authToken = {
-            headers: {
-                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-            },
+        try {
+            const api = `http://localhost:5000/products/${params.id}`;
+            const authToken = {
+                headers: {
+                    authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+                },
+            };
+            const fetchProduct = await axios(api, authToken);
+            const result = fetchProduct.data;
+            setName(result.name);
+            setPrice(result.price);
+            setBrand(result.brand);
+            setCategory(result.category);
+        } catch (error) {
+            console.error(error);
         };
-        const fetchProduct = await fetch(api, authToken);
-        const result = await fetchProduct.json();
-        setName(result.name);
-        setPrice(result.price);
-        setBrand(result.brand);
-        setCategory(result.category);
     };
 
-    // Got product update
+    // Update the got product
     const handleUpdate = async () => {
         // Simple form validation part
-        if (!name || !price || !brand || !category) {       
+        if (!name || !price || !brand || !category) {
             setErrorMsg(true);
             return false;
         } else {
             navigate("/");
         };
-        // api integration
-        const api = `http://localhost:5000/products/${params.id}`;
-        const createRequest = {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-            },
-            body: JSON.stringify({name, price, brand, category}),
+        try {
+            // api integration
+            const api = `http://localhost:5000/products/${params.id}`;
+            const createRequest = {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+                },
+                data: { name, price, brand, category },
+            };
+            await axios(api, createRequest);
+        } catch (error) {
+            console.error(error);
         };
-        const fetchData = await fetch(api, createRequest);
-        await fetchData.json();
     };
 
 

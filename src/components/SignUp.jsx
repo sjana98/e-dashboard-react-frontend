@@ -11,30 +11,29 @@ function SignUp() {
   const navigate = useNavigate();
 
   // Sign up page restrict, for signed up user
-  useEffect(() => {              
+  useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
       navigate("/")
     };
-  },[]);
-  
+  }, []);
+
   const collectData = async () => {
     // Simple form validation
     if (!name || !email || !password) {
       setErrorMsg(true);
       return false;
     };
-    // api integration part
-    const api = "http://localhost:5000/signup";
-    const createRequest = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: { name, email, password },
-    };
-
     try {
+      // api integration part
+      const api = "http://localhost:5000/signup";
+      const createRequest = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: { name, email, password },
+      };
       let result = await axios(api, createRequest);
       result = result.data;
       // Store jwt token in browser local storage
@@ -47,7 +46,6 @@ function SignUp() {
       alert("Already have user with same email id!!!");
       console.error(error);
     };
-    
   };
 
 

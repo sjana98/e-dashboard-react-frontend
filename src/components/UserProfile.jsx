@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function UserProfile() {
 
@@ -15,31 +16,35 @@ function UserProfile() {
     const handleDelete = async (id) => {
         const confirmation = window.confirm("Are you sure you want to delete your account and all data? This action cannot be undone.");
         if (confirmation) {
-            // delete account of loged in user.
-            const api = `http://localhost:5000/account/${id}`;
-            const createRequest = {
-                method: "Delete",
-                headers: {
-                    authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-                },
-            };
-            let result = await fetch(api, createRequest);
-            result = await result.json();
-            // delete products with account delete of loged in user.
-            if (result) {
-                const api2 = `http://localhost:5000/products-of-user/${userId}`;   
-                const createRequest2 = {
+            try {
+                // delete account of loged in user.
+                const api = `http://localhost:5000/account/${id}`;
+                const createRequest = {
                     method: "Delete",
                     headers: {
                         authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
                     },
                 };
-                await fetch(api2, createRequest2);
+                let result = await axios(api, createRequest);
+                result = result.data;
+                // delete products with account delete of loged in user.
+                if (result) {
+                    const api2 = `http://localhost:5000/products-of-user/${userId}`;
+                    const createRequest2 = {
+                        method: "Delete",
+                        headers: {
+                            authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+                        },
+                    };
+                    await axios(api2, createRequest2);
 
-                localStorage.clear("user");
-                navigate("/signup");
-            }
-        }
+                    localStorage.clear("user");
+                    navigate("/signup");
+                };
+            } catch (error) {
+                console.error(error);
+            };
+        };
     };
 
     return (

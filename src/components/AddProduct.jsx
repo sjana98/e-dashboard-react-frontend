@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
 
 function AddProduct() {
 
@@ -20,20 +22,22 @@ function AddProduct() {
             setConfirmMsg(true);
         };
 
-        // api integration part
-        const userId = JSON.parse(localStorage.getItem("user"))._id;   
-        
-        const api = "http://localhost:5000/add-product"; 
-        const createRequest = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-            },
-            body: JSON.stringify({ name, price, brand, category, userId }),
+        try {
+            // api integration part
+            const userId = JSON.parse(localStorage.getItem("user"))._id;   
+            const api = "http://localhost:5000/add-product"; 
+            const createRequest = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+                },
+                data: { name, price, brand, category, userId },
+            };
+            await axios(api, createRequest);
+        } catch (error) {
+            console.error(error);
         };
-        let result = await fetch(api, createRequest);
-        await result.json();
     };
 
     return (
