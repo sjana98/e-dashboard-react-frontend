@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
 
@@ -23,17 +24,20 @@ function Login() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email, password }),
+            data: { email, password },
         };
-        let result = await fetch(postApi, createRequest);
-        result = await result.json();
-        // Store jwt token in browser local storage
-        if (result.authToken) {
-            localStorage.setItem("user", JSON.stringify(result.userDetail));
-            localStorage.setItem("token", JSON.stringify(result.authToken));
-            navigate("/");
-        } else {
+        try {
+            let result = await axios(postApi, createRequest);
+            result = result.data;
+            // Store jwt token in browser local storage
+            if (result.authToken) {
+                localStorage.setItem("user", JSON.stringify(result.userDetail));
+                localStorage.setItem("token", JSON.stringify(result.authToken));
+                navigate("/");
+            };
+        } catch (error) {
             alert("Valid email and password require for login!!");
+            console.error(error);
         };
     };
 

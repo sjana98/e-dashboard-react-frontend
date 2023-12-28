@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 function Products() {
@@ -15,8 +16,8 @@ function Products() {
     const userId = JSON.parse(localStorage.getItem("user"))._id;
 
     useEffect(() => {
-        allProducts()
-        setCardFormProducts(true)
+        allProducts();
+        setCardFormProducts(true);
     }, []);
     // Get all products on screen
     const allProducts = async () => {
@@ -26,13 +27,17 @@ function Products() {
                 authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
             },
         };
-        let fetchProducts = await fetch(api, authToken);
-        fetchProducts = await fetchProducts.json();
-        if (fetchProducts.length > 0) {
-            setProducts(fetchProducts);
-        } else {
+        try {
+            let fetchProducts = await axios(api, authToken);
+            fetchProducts = fetchProducts.data;
+            if (fetchProducts.length > 0) {
+                setProducts(fetchProducts);
+            };
+        } catch (error) {
             navigate("/emptyPage");             // This line is for, page is shows error after the last product deleted.
-        };
+            console.error(error);
+            
+        }
     };
 
     // Delete product 
@@ -44,16 +49,18 @@ function Products() {
                 authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
             },
         };
-        let result = await fetch(api, createRequest);
-        await result.json();
-        if (result) {
-            allProducts();
+        try {
+            let result = await axios(api, createRequest);
+            if (result) {
+                allProducts();
+            };
+        } catch (error) {
+            console.error(error);
         };
     };
 
     // Search product
     const handleSearch = async () => {
-        console.log(searchProduct)
         const key = searchProduct;
         const api = `http://localhost:5000/search/${key}`;
         const authToken = {
@@ -61,16 +68,21 @@ function Products() {
                 authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
             },
         };
-        const fetchData = await fetch(api, authToken);
-        const result = await fetchData.json();
-        setProducts(result);
-        setShowBtn(true);
-    }
+        try {
+            const fetchData = await axios(api, authToken);
+            const result = fetchData.data;
+            setProducts(result);
+            setShowBtn(true);
+        } catch (error) {
+          console.error(error);
+        };
+    };
+    // Handle refresh page after search 
     const handleBack = () => {
         window.location.reload(true);
     };
 
-    // Got all products maping
+    // Maping of all Got products
     const productsMap = products.map((item, index) => (
 
         <tr key={item._id}>

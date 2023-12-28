@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function SignUp() {
 
@@ -17,32 +18,38 @@ function SignUp() {
     };
   },[]);
   
-  const collectData = async () => { 
+  const collectData = async () => {
     // Simple form validation
-    if (!name || !email || !password) {  
+    if (!name || !email || !password) {
       setErrorMsg(true);
       return false;
     };
     // api integration part
-    const api = "http://localhost:5000/signup";    
+    const api = "http://localhost:5000/signup";
     const createRequest = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, email, password }),
+      data: { name, email, password },
     };
-    let result = await fetch(api, createRequest);
-    result = await result.json();
-    // Store jwt token in browser local storage
-    if (result.authToken) {
-      localStorage.setItem("user", JSON.stringify(result.resultData));
-      localStorage.setItem("token", JSON.stringify(result.authToken));
-      navigate("/");
-    } else {
-      alert("Already have user with same email id !!!");
+
+    try {
+      let result = await axios(api, createRequest);
+      result = result.data;
+      // Store jwt token in browser local storage
+      if (result.authToken) {
+        localStorage.setItem("user", JSON.stringify(result.resultData));
+        localStorage.setItem("token", JSON.stringify(result.authToken));
+        navigate("/");
+      };
+    } catch (error) {
+      alert("Already have user with same email id!!!");
+      console.error(error);
     };
+    
   };
+
 
   return (
     <>
