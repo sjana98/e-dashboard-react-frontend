@@ -40,7 +40,7 @@ function Products() {
             // Expire auth token handle
             alert("Authentication time out. Please login again!!");
             localStorage.clear("user");
-            navigate("/login");   
+            navigate("/login");
         };
     };
 
@@ -118,7 +118,7 @@ function Products() {
         <>
             <div className="Product-list">
                 <h4>Product List</h4>
-                
+
                 {/* Abb product button  */}
                 <button className='addProductBtn'><Link to="/add" className='addProductLink' >Add Product</Link></button>
                 {/* Products search area */}
@@ -150,27 +150,30 @@ function Products() {
             </div>
 
             {/* Products in card format */}
-            {CardFormProducts &&
-                products.map((item, index) => (
-                    <>
-                        <div className="product-card">
-                            <img src='https://cdn-icons-png.flaticon.com/512/1440/1440523.png' alt="User Logo" className="user-profile-card__logo" />
+            <div className="product-card-wrapper">
+                {CardFormProducts &&
+                    products.map((item, index) => (
+                        <>
+                            <div className="product-card">
+                                <img src='https://cdn-icons-png.flaticon.com/512/1440/1440523.png' alt="User Logo" className="user-profile-card__logo" />
 
-                            <div className="product-info" key={item._id}>
-                                <p> <span>Sl. no :</span> {index + 1}</p>
-                                <p> <span>Name :</span> {item.name}</p>
-                                <p> <span>Price :</span> {item.price}</p>
-                                <p> <span>Brand :</span> {item.brand}</p>
-                                <p> <span>Category :</span> {item.category}</p>
+                                <div className="product-info" key={item._id}>
+                                    <p> <span>Sl. no :</span> {index + 1}</p>
+                                    <p> <span>Name :</span> {item.name}</p>
+                                    <p> <span>Price :</span> {item.price}</p>
+                                    <p> <span>Brand :</span> {item.brand}</p>
+                                    <p> <span>Category :</span> {item.category}</p>
+                                </div>
+                                <div className="product-actions" key={item._id}>
+                                    <button className='updateBtn'><Link to={`/update/${item._id}`} className='updateLink'>Update</Link></button>
+                                    <button onClick={() => handleDelete(item._id)} className='deleteBtn'>Delete</button>
+                                </div>
                             </div>
-                            <div className="product-actions" key={item._id}>
-                                <button className='updateBtn'><Link to={`/update/${item._id}`} className='updateLink'>Update</Link></button>
-                                <button onClick={() => handleDelete(item._id)} className='deleteBtn'>Delete</button>
-                            </div>
-                        </div>
-                    </>
-                ))
-            }
+                        </>
+                    ))
+                }
+            </div>
+
         </>
     )
 }

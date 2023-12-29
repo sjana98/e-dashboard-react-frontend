@@ -214,13 +214,19 @@ p {
 }
 
 /* Card form products css */
+.product-card-wrapper{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-row-gap: 25px;
+  margin: 2% 18%;
+}
 .product-card {
+  
   display: inline-block;
-  width: 40%;
+  width: 100%;
   border: 1px solid #ccc;
   background: linear-gradient(to top, rgb(224, 239, 239), rgba(146, 216, 211, 0.859));
-  padding: 20px;
-  margin: 15px 60px;
+  padding: 30px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 
