@@ -32,9 +32,11 @@ function Products() {
             fetchProducts = fetchProducts.data;
             if (fetchProducts.length > 0) {
                 setProducts(fetchProducts);
+            } else {
+                navigate("/emptyPage"); 
             };
         } catch (error) {
-            navigate("/emptyPage");             // This line is for, page is shows error after the last product deleted.
+            navigate("/login")            // This line is for, page is shows error after the last product deleted.
             console.error(error);
         };
     };
