@@ -12,7 +12,7 @@ function Products() {
     const [CardFormProducts, setCardFormProducts] = useState(false);
 
     const navigate = useNavigate();
-    // Get pesionalize products of user
+    // Get personalize products of user
     const userId = JSON.parse(localStorage.getItem("user"))._id;
 
     useEffect(() => {
@@ -33,11 +33,14 @@ function Products() {
             if (fetchProducts.length > 0) {
                 setProducts(fetchProducts);
             } else {
-                navigate("/emptyPage"); 
+                navigate("/emptyPage");    // This line is for, page is shows error after the last product deleted.
             };
         } catch (error) {
-            navigate("/login")            // This line is for, page is shows error after the last product deleted.
             console.error(error);
+            // Expire auth token handle
+            alert("Authentication time out. Please login again!!");
+            localStorage.clear("user");
+            navigate("/login");   
         };
     };
 
@@ -102,19 +105,20 @@ function Products() {
 
     // Table to Card format switching handle
     const handleTableForm = () => {
-        setTableFormProducts(true)
-        setCardFormProducts(false)
-    }
+        setTableFormProducts(true);
+        setCardFormProducts(false);
+    };
     const handleCardForm = () => {
-        setCardFormProducts(true)
-        setTableFormProducts(false)
-    }
+        setCardFormProducts(true);
+        setTableFormProducts(false);
+    };
 
 
     return (
         <>
             <div className="Product-list">
                 <h4>Product List</h4>
+                
                 {/* Abb product button  */}
                 <button className='addProductBtn'><Link to="/add" className='addProductLink' >Add Product</Link></button>
                 {/* Products search area */}
@@ -126,6 +130,7 @@ function Products() {
                     {CardFormProducts && <button className='uiFormBtn' onClick={handleTableForm}>Change to table form</button>}
                     {TableFormProducts && <button className='uiFormBtn' onClick={handleCardForm}>Change to card form</button>}
                 </div>
+
                 {/* Products in table format */}
                 {TableFormProducts &&
                     <table>

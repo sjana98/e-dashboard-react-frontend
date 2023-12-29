@@ -43,6 +43,10 @@ function UserProfile() {
                 };
             } catch (error) {
                 console.error(error);
+                // Expire auth token handle
+                alert("Authentication time out. Please login again!!");
+                localStorage.clear("user");
+                navigate("/login");
             };
         };
     };

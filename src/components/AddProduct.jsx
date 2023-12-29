@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 
 function AddProduct() {
@@ -10,6 +12,9 @@ function AddProduct() {
     const [category, setCategory] = useState("");
     const [errorMsg, setErrorMsg] = useState(false);
     const [confirmMsg, setConfirmMsg] = useState(false);
+
+    const navigate = useNavigate();
+
 
     const userName = JSON.parse(localStorage.getItem("user")).name;
     
@@ -37,6 +42,11 @@ function AddProduct() {
             await axios(api, createRequest);
         } catch (error) {
             console.error(error);
+            // Expire auth token handle
+            setConfirmMsg(false);
+            alert("Authentication time out. Please login again!!");
+            localStorage.clear("user");
+            navigate("/login");
         };
     };
 
