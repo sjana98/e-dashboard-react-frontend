@@ -29,7 +29,7 @@ function Login() {
             };
             let result = await axios(postApi, createRequest);
             result = result.data;
-            // Store jwt token in browser local storage
+            // Store jwt token and user details in browser local storage
             if (result.authToken) {
                 localStorage.setItem("user", JSON.stringify(result.userDetail));
                 localStorage.setItem("token", JSON.stringify(result.authToken));
@@ -43,7 +43,7 @@ function Login() {
 
     return (
         <>
-            <div className="Container">
+            <div className="Form-Container">
                 <h2>Login Now</h2>
                 <input type="text" placeholder='Enter email' className='inputField' value={email} onChange={(e) => setUserEmail(e.target.value)} />
                 <input type="password" placeholder='Enter password' className='inputField' value={password} onChange={(e) => setUserPassword(e.target.value)} />

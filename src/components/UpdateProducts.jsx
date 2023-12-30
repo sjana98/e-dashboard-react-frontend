@@ -69,7 +69,7 @@ function UpdateProducts() {
 
     return (
         <>
-            <form className="Container addPtCont">
+            <form className="Form-Container">
                 <h3>Update Product</h3>
                 <input type="text" className='inputField' placeholder='Enter name of product' value={name} onChange={(e) => setName(e.target.value)} />
                 {errorMsg && !name && <span className='validationText'>Enter updated name of product!!</span>}
@@ -83,7 +83,7 @@ function UpdateProducts() {
                 <input type="text" className='inputField' placeholder='Enter category of product' value={category} onChange={(e) => setCategory(e.target.value)} />
                 {errorMsg && !category && <span className='validationText'>Enter category of product!!</span>}
 
-                <button type='submit' className='addBtn' onClick={handleUpdate}>Update</button>
+                <button type='submit' onClick={handleUpdate}>Update</button>
             </form>
         </>
     )

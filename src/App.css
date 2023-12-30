@@ -54,50 +54,55 @@ html {
   background-color: lightskyblue;
 }
 
-/* Commen CSS */
-.Container {
-  margin-top: 100px;
-  margin-left: 38%;
-}
-.inputField {
-  display: block;
-  margin-top: 20px;
-  padding: 8px;
+/* login in & sign up css others form  */
+.Form-Container {
   width: 300px;
-  border: 1px solid lightskyblue;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+
+  & h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  .inputField {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .validationText {
+    margin-bottom: 1px;
+    color: red;
+    font-size: 12px;
+  }
+
+  & button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: lightseagreen;
+    color: white;
+    cursor: pointer;
+  }
+
+  & p {
+    font-size: x-small ;
+    font-weight: 500;
+    text-align: center;
+  }
 }
-button {
-  margin-top: 20px;
-  padding: 10px;
-  width: 150px;
-  background-color: lightseagreen;
-  color: white;
-  border: none;
-}
-button:hover {
-  cursor: pointer;
+.Form-Container button:hover {
   background-color: rgb(26, 126, 121);
-}
-p {
-  font-size: smaller;
-  margin-top: 13px;
 }
 
 /* Add product component */
-.addBtn {
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  width: 100px;
-}
-.addPtCont {
-  margin-top: 15px;
-}
-.validationText {
-  font-size: 10px;
-  color: red;
-  display: block;
-  margin-bottom: -10px;
-}
 .conformationText {
   display: block;
   font-size: 14px;
@@ -119,6 +124,19 @@ p {
   font-weight: 600;
 }
 
+/* Product component extra btn CSS */
+& button {
+  margin-top: 20px;
+  padding: 10px;
+  width: 150px;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+}
+& button:hover {
+  cursor: pointer;
+  background-color: rgb(26, 126, 121);
+}
 /*Table form products CSS */
 .Product-list {
   text-align: center;
@@ -162,6 +180,10 @@ p {
     margin-left: 5px;
     border-radius: 10px;
     box-shadow: 5px 6px 1px rgba(32, 178, 171, 0.178);
+  }
+  & p {
+    font-size: smaller;
+    margin-top: 13px;
   }
 }
 .Product-list table {
@@ -211,6 +233,10 @@ p {
     text-decoration: none;
     color: white;
   }
+  & p {
+    font-size: smaller;
+    margin-top: 13px;
+  }
 }
 
 /* Card form products css */
@@ -221,7 +247,6 @@ p {
   margin: 2% 18%;
 }
 .product-card {
-  
   display: inline-block;
   width: 100%;
   border: 1px solid #ccc;
@@ -233,6 +258,10 @@ p {
   & img{
     float: right;
     border-radius: 0px;
+  }
+  & p {
+    font-size: smaller;
+    margin-top: 13px;
   }
 }
 .product-card span{

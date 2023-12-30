@@ -52,7 +52,7 @@ function AddProduct() {
 
     return (
         <>
-            <form className="Container addPtCont">
+            <form className="Form-Container">
                 <h3>Add Product</h3>
                 <input type="text" className='inputField' placeholder='Enter name of product' value={name} onChange={(e) => setName(e.target.value)} />
                 {errorMsg && !name && <span className='validationText'>Enter name of product!!</span>}

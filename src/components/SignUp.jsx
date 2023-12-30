@@ -51,7 +51,7 @@ function SignUp() {
 
   return (
     <>
-      <div className="Container">
+      <div className="Form-Container">
         <h2>Sign Up Now</h2>
         <input className='inputField' type="text" placeholder='Enter your name' value={name} onChange={(e) => setName(e.target.value)} />
         {errorMsg && !name && <span className='validationText'>Enter your name!! </span>}
