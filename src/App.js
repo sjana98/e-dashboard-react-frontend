@@ -10,6 +10,7 @@ import Products from './components/Products';
 import EmptyProductPage from './components/EmptyProductPage';
 import UpdateProducts from './components/UpdateProducts';
 import UserProfile from './components/UserProfile';
+import PasswordChange from './components/PasswordChange';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
 
           <Route path='/signup' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/password_update' element={<PasswordChange />} />
         </Routes>
 
       </Router>
