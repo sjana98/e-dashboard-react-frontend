@@ -7,6 +7,7 @@ function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordShow, setPasswordShow] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
   const navigate = useNavigate();
 
@@ -59,8 +60,14 @@ function SignUp() {
         <input className='inputField' type="text" placeholder='Enter your email' value={email} onChange={(e) => setEmail(e.target.value)} />
         {errorMsg && !email && <span className='validationText'>Enter your email!! </span>}
 
-        <input className='inputField' type="password" placeholder='Enter password at least 6 digit' value={password} onChange={(e) => setPassword(e.target.value)} />
+        {/* Password show & hide handle with toggle text */}
+        <input className='inputField' type={(!passwordShow && "password") || (passwordShow && "text")} placeholder='Enter password at least 6 digit' value={password} onChange={(e) => setPassword(e.target.value)} />
         {errorMsg && !password && <span className='validationText'>Enter password!! </span>}
+        {/* On click state change of passwordShow */}
+        <span onClick={() => setPasswordShow((pre) => (!pre))} className='password-show-hide-text'>
+          {passwordShow && "Hide"}
+          {!passwordShow && "Show"}
+        </span>
 
         <p>Already have an account? <Link to="/login"> Login here</Link></p>
         <button type='submit' onClick={collectData}>Sign Up</button>

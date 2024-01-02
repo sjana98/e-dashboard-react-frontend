@@ -6,6 +6,7 @@ function Login() {
 
     const [email, setUserEmail] = useState("");
     const [password, setUserPassword] = useState("");
+    const [passwordShow, setPasswordShow] = useState(false);
     const navigate = useNavigate();
 
     // Login page restrict, for loged in user
@@ -36,7 +37,7 @@ function Login() {
                 navigate("/");
             };
         } catch (error) {
-            alert("Valid email and password require for login!!");
+            alert("Registered email and password require for login!!");
             console.error(error);
         };
     };
@@ -45,10 +46,21 @@ function Login() {
         <>
             <div className="Form-Container">
                 <h2>Login Now</h2>
+
                 <input type="text" placeholder='Enter email' className='inputField' value={email} onChange={(e) => setUserEmail(e.target.value)} />
-                <input type="password" placeholder='Enter password' className='inputField' value={password} onChange={(e) => setUserPassword(e.target.value)} />
+
+                {/* Password show & hide handle with toggle text */}
+                <input type={(!passwordShow && "password") || (passwordShow && "text")} placeholder='Enter password' className='inputField' value={password} onChange={(e) => setUserPassword(e.target.value)} />
+                {/* On click state change of passwordShow */}
+                <span onClick={()=>setPasswordShow((pre)=>(!pre))} className='password-show-hide-text login-page-password'>
+                    {passwordShow && "Hide"} 
+                    {!passwordShow && "Show"}
+                </span>
+
                 <p>Don't have an account? <Link to="/signup"> Sign up here</Link></p>
+
                 <p> <Link to="/password_update"> Forgot password?</Link></p>
+
                 <button type='submit' onClick={handleLogin}>Login</button>
             </div>
         </>
