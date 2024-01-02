@@ -52,7 +52,7 @@ function Login() {
                 {/* Password show & hide handle with toggle text */}
                 <input type={(!passwordShow && "password") || (passwordShow && "text")} placeholder='Enter password' className='inputField' value={password} onChange={(e) => setUserPassword(e.target.value)} />
                 {/* On click state change of passwordShow */}
-                <span onClick={()=>setPasswordShow((pre)=>(!pre))} className='password-show-hide-text login-page-password'>
+                <span onClick={()=>setPasswordShow((pre)=>(!pre))} className='password-show-hide-text login-page-show-hide-text'>
                     {passwordShow && "Hide"} 
                     {!passwordShow && "Show"}
                 </span>

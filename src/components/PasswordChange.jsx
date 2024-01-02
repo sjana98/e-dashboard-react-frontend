@@ -6,8 +6,8 @@ function PasswordChange() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordShow, setPasswordShow] = useState(false);
     const [errorMsg, setErrorMsg] = useState(false);
-    const [confirmMsg, setConfirmMsg] = useState(false);
     const navigate = useNavigate();
 
     // Update the fogot password 
@@ -31,13 +31,12 @@ function PasswordChange() {
             let fetchData = await axios(api, createRequest);
             fetchData = fetchData.data;
             if (fetchData) {
-                setConfirmMsg(true);
-                alert("Successfully update your password");
+                alert("Successfully updated your password.");
                 navigate("/login");
             };
 
         } catch (error) {
-            alert("Please enter your registered email id for varification!!");
+            alert("Varification error!!");
             console.error(error);
         };
     };
@@ -45,16 +44,24 @@ function PasswordChange() {
     return (
         <>
             <div className="Form-Container">
-                <h4>Password Update</h4>
-                <input type="email" className='inputField' placeholder='Enter registered email id for varification' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <h4 className='title'>Password Update</h4>
+
+                <span className='labelText'>Enter registered email id for varification:</span>
+                <input type="email" className='inputField' placeholder='Enter email id ' value={email} onChange={(e) => setEmail(e.target.value)} />
                 {errorMsg && !email && <span className='validationText'>Enter your registered email id!!</span>}
 
-                <input type="password" className='inputField' placeholder='Enter new password atleast 6 digit' value={password} onChange={(e) => setPassword(e.target.value)} />
+                {/* Password show & hide handle with toggle text */}
+                <span className='labelText'>Enter new password:</span>
+                <input type={(!passwordShow && "password") || (passwordShow && "text")} className='inputField' placeholder= 'Password atleast 6 digit' value={password} onChange={(e) => setPassword(e.target.value)} />
                 {errorMsg && !password && <span className='validationText'>Enter new password!!</span>}
+                {/* On click state change of passwordShow */}
+                <span onClick={()=>setPasswordShow((pre)=>(!pre))} className='password-show-hide-text updatePassword-page-show-hide-text'>
+                    {passwordShow && "Hide"} 
+                    {!passwordShow && "Show"}
+                </span>
 
                 <button type='submit' onClick={handleUpdate}>Update</button>
                 
-                {confirmMsg && <span className='conformationText'>Successfully update your password.</span>}
             </div>
         </>
     )

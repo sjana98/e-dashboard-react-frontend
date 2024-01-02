@@ -72,15 +72,17 @@ html {
   .inputField {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
 
   .validationText {
-    margin-bottom: 1px;
+    margin-bottom: 2px;
+    margin-top: -5px;
     color: red;
-    font-size: 12px;
+    font-size: 8px;
+    display: block;
   }
 
   & button {
@@ -100,25 +102,31 @@ html {
     text-align: center;
   }
 
+  /* Password Update CSS */
   .password-show-hide-text{
     position: absolute;
     right: 30px;
-    bottom: 114.5px;
-    font-size: small;
+    bottom: 113px;
+    font-size: x-small;
     color: #888;
     cursor: pointer;
   }
-  .password-show-hide-text{
-    position: absolute;
-    right: 30px;
-    bottom: 114.5px;
-    font-size: small;
-    color: #888;
-    cursor: pointer;
+  .login-page-show-hide-text{
+    bottom: 132px;
   }
-  .login-page-password{
-    bottom: 132.5px;
+  .updatePassword-page-show-hide-text{
+    bottom: 95px;
   }
+  .title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .labelText{
+    font-size: 10px;
+    font-weight: 500;
+  }
+  
 }
 .Form-Container button:hover {
   background-color: rgb(26, 126, 121);
