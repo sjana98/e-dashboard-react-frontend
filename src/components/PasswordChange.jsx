@@ -16,9 +16,7 @@ function PasswordChange() {
         if (!email || !password) {
             setErrorMsg(true);
             return false;
-        } else {
-            setConfirmMsg(true);
-        }
+        };
         try {
 
             // api integration
@@ -36,11 +34,10 @@ function PasswordChange() {
                 setConfirmMsg(true);
                 alert("Successfully update your password");
                 navigate("/login");
-            } else {
-                alert("Please use enter your registered email id for varification!!");
             };
 
         } catch (error) {
+            alert("Please enter your registered email id for varification!!");
             console.error(error);
         };
     };
@@ -48,15 +45,15 @@ function PasswordChange() {
     return (
         <>
             <div className="Form-Container">
-                <h3>Update Password</h3>
-                <input type="email" className='inputField' placeholder='Enter your registered email id' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <h4>Password Update</h4>
+                <input type="email" className='inputField' placeholder='Enter registered email id for varification' value={email} onChange={(e) => setEmail(e.target.value)} />
                 {errorMsg && !email && <span className='validationText'>Enter your registered email id!!</span>}
-                {/* {invalidMsg && <span className='conformationText'>This .</span>} */}
 
                 <input type="password" className='inputField' placeholder='Enter new password atleast 6 digit' value={password} onChange={(e) => setPassword(e.target.value)} />
                 {errorMsg && !password && <span className='validationText'>Enter new password!!</span>}
 
                 <button type='submit' onClick={handleUpdate}>Update</button>
+                
                 {confirmMsg && <span className='conformationText'>Successfully update your password.</span>}
             </div>
         </>
