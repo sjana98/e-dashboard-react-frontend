@@ -118,7 +118,6 @@ function Products() {
         <>
             <div className="Product-list">
                 <h4>Product List</h4>
-
                 {/* Abb product button  */}
                 <button className='addProductBtn'><Link to="/add" className='addProductLink' >Add Product</Link></button>
                 {/* Products search area */}
@@ -130,6 +129,9 @@ function Products() {
                     {CardFormProducts && <button className='uiFormBtn' onClick={handleTableForm}>Change to table form</button>}
                     {TableFormProducts && <button className='uiFormBtn' onClick={handleCardForm}>Change to card form</button>}
                 </div>
+
+                <p>Total products : {productsMapWithMsg.length} </p>
+
 
                 {/* Products in table format */}
                 {TableFormProducts &&
