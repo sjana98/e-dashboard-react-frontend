@@ -71,7 +71,7 @@ html {
 
   .inputField {
     width: 100%;
-    padding: 10px;
+    padding: 10px 40px 10px 10px;
     margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -103,19 +103,21 @@ html {
   }
 
   /* Password Update CSS */
+  .password-wrapper{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+  .inputField{
+    grid-column: 1/3;
+    grid-row: 1/2;
+  }
   .password-show-hide-text{
-    position: absolute;
-    right: 30px;
-    bottom: 113px;
+    grid-column: 2/3;
+    grid-row: 1/2;
     font-size: x-small;
     color: #888;
     cursor: pointer;
-  }
-  .login-page-show-hide-text{
-    bottom: 132px;
-  }
-  .updatePassword-page-show-hide-text{
-    bottom: 95px;
   }
   .title{
     display: flex;

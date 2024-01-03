@@ -54,24 +54,27 @@ function SignUp() {
     <>
       <div className="Form-Container">
         <h2>Sign Up Now</h2>
+
         <input className='inputField' type="text" placeholder='Enter your name' value={name} onChange={(e) => setName(e.target.value)} />
         {errorMsg && !name && <span className='validationText'>Enter your name!! </span>}
 
         <input className='inputField' type="text" placeholder='Enter your email' value={email} onChange={(e) => setEmail(e.target.value)} />
         {errorMsg && !email && <span className='validationText'>Enter your email!! </span>}
 
-        {/* Password show & hide handle with toggle text */}
-        <input className='inputField' type={(!passwordShow && "password") || (passwordShow && "text")} placeholder='Enter password at least 6 digit' value={password} onChange={(e) => setPassword(e.target.value)} />
+        <div className="password-wrapper">
+          {/* Password show & hide handle with toggle text */}
+          <input className='inputField' type={(!passwordShow && "password") || (passwordShow && "text")} placeholder='Enter password at least 6 digit' value={password} onChange={(e) => setPassword(e.target.value)} />
+          {/* On click state change of passwordShow */}
+          <span onClick={() => setPasswordShow((pre) => (!pre))} className='password-show-hide-text'>
+            {passwordShow && "Hide"}
+            {!passwordShow && "Show"}
+          </span>
+        </div>
         {errorMsg && !password && <span className='validationText'>Enter password!! </span>}
-        {/* On click state change of passwordShow */}
-        <span onClick={() => setPasswordShow((pre) => (!pre))} className='password-show-hide-text'>
-          {passwordShow && "Hide"}
-          {!passwordShow && "Show"}
-        </span>
 
         <p>Already have an account? <Link to="/login"> Login here</Link></p>
+        
         <button type='submit' onClick={collectData}>Sign Up</button>
-
       </div>
     </>
   )

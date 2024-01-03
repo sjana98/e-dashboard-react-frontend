@@ -49,13 +49,15 @@ function Login() {
 
                 <input type="text" placeholder='Enter email' className='inputField' value={email} onChange={(e) => setUserEmail(e.target.value)} />
 
-                {/* Password show & hide handle with toggle text */}
-                <input type={(!passwordShow && "password") || (passwordShow && "text")} placeholder='Enter password' className='inputField' value={password} onChange={(e) => setUserPassword(e.target.value)} />
-                {/* On click state change of passwordShow */}
-                <span onClick={()=>setPasswordShow((pre)=>(!pre))} className='password-show-hide-text login-page-show-hide-text'>
-                    {passwordShow && "Hide"} 
-                    {!passwordShow && "Show"}
-                </span>
+                <div className="password-wrapper">
+                    {/* Password show & hide handle with toggle text */}
+                    <input type={(!passwordShow && "password") || (passwordShow && "text")} placeholder='Enter password' className='inputField' value={password} onChange={(e) => setUserPassword(e.target.value)} />
+                    {/* On click state change of passwordShow */}
+                    <span onClick={() => setPasswordShow((pre) => (!pre))} className='password-show-hide-text'>
+                        {passwordShow && "Hide"}
+                        {!passwordShow && "Show"}
+                    </span>
+                </div>
 
                 <p>Don't have an account? <Link to="/signup"> Sign up here</Link></p>
 

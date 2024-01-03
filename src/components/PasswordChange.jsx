@@ -36,7 +36,7 @@ function PasswordChange() {
             };
 
         } catch (error) {
-            alert("Varification error!!");
+            alert("Verification failed due to wrong email address!!");
             console.error(error);
         };
     };
@@ -46,22 +46,23 @@ function PasswordChange() {
             <div className="Form-Container">
                 <h4 className='title'>Password Update</h4>
 
-                <span className='labelText'>Enter registered email id for varification:</span>
-                <input type="email" className='inputField' placeholder='Enter email id ' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <span className='labelText'>Registered email address for varification :</span>
+                <input type="email" className='inputField' placeholder='Enter email address ' value={email} onChange={(e) => setEmail(e.target.value)} />
                 {errorMsg && !email && <span className='validationText'>Enter your registered email id!!</span>}
 
+                <span className='labelText'>Enter new password :</span>
                 {/* Password show & hide handle with toggle text */}
-                <span className='labelText'>Enter new password:</span>
-                <input type={(!passwordShow && "password") || (passwordShow && "text")} className='inputField' placeholder= 'Password atleast 6 digit' value={password} onChange={(e) => setPassword(e.target.value)} />
-                {errorMsg && !password && <span className='validationText'>Enter new password!!</span>}
-                {/* On click state change of passwordShow */}
-                <span onClick={()=>setPasswordShow((pre)=>(!pre))} className='password-show-hide-text updatePassword-page-show-hide-text'>
-                    {passwordShow && "Hide"} 
-                    {!passwordShow && "Show"}
-                </span>
+                <div className="password-wrapper">
+                    <input type={(!passwordShow && "password") || (passwordShow && "text")} className='inputField' placeholder='Password atleast 6 digit' value={password} onChange={(e) => setPassword(e.target.value)} />
+                    {/* On click state change of passwordShow */}
+                    <span onClick={() => setPasswordShow((pre) => (!pre))} className='password-show-hide-text'>
+                        {passwordShow && "Hide"}
+                        {!passwordShow && "Show"}
+                    </span>
+                </div>
+                {errorMsg && !password && <span className='validationText'>New password!!</span>}
 
                 <button type='submit' onClick={handleUpdate}>Update</button>
-                
             </div>
         </>
     )
